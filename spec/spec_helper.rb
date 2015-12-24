@@ -25,4 +25,7 @@ RSpec.configure do |config|
   config.include RSpec::Rails::RequestExampleGroup,
                  type: :request,
                  file_path: %r(spec/api)
+  config.include RSpec::Rails::RequestExampleGroup,
+                 type: :request,
+                 file_path: %r(spec/integration)
 end
