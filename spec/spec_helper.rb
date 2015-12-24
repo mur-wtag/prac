@@ -5,7 +5,20 @@ require 'rspec/rails'
 require 'factory_girl_rails'
 require 'capybara/rspec'
 require 'capybara/rails'
+require 'vcr'
+VCR.configure do |config|
+  config.allow_http_connections_when_no_cassette = true
+  config.hook_into :webmock
+  config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+  config.preserve_exact_body_bytes { false }
+  config.default_cassette_options = {
+    record: ENV['VCR_RECORD'] ? :all : :once,
+    re_record_interval: 20.years,
+    match_requests_on: [:method, :uri, :body],
+  }
+end
 require 'webmock/rspec'
+WebMock.disable_net_connect!(allow_localhost: true)
 
 require 'shoulda/matchers'
 

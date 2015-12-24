@@ -52,11 +52,11 @@ module API
             total_price: total_price
           }
           begin
-            present models, model_type.merge(additional_params), with: API::Entities::ModelType
+            present model_type.attributes.merge(additional_params), with: API::Entities::ModelType
           rescue Exception => error
             Rails.logger.error "#{error}"
-          status :bad_gateway
-          { errors: 'Something went wrong' }
+            status :bad_gateway
+            { errors: 'Something went wrong' }
           end
         end
       end
