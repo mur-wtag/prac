@@ -2,7 +2,7 @@ require 'doorkeeper/grape/helpers'
 
 module API
   class Dispatch < Grape::API
-    helpers Doorkeeper::Grape::Helpers
+    # helpers Doorkeeper::Grape::Helpers
 
     PAGINATION_MAX_PER_PAGE     = 300
     PAGINATION_DEFAULT_PER_PAGE = 50
@@ -16,9 +16,13 @@ module API
     # Authentication
     #
     #
-    before do
-      doorkeeper_authorize!
+    # before do
+    #   # doorkeeper_authorize!
+    http_basic do |username, password|
+      # verify user's password here
+      { 'test' => 'password1' }[username] == password
     end
+    # end
 
     #
     # Pagination

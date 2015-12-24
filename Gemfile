@@ -22,6 +22,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'faker'
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'shoulda-matchers', require: false
