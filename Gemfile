@@ -14,6 +14,7 @@ gem 'rails-i18n'
 gem 'therubyracer'
 gem 'uglifier'
 gem 'wombat'
+gem 'simple-rss'
 
 group :development, :test do
   gem 'factory_girl_rails'
