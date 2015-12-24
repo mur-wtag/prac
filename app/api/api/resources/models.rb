@@ -2,9 +2,9 @@ module API
   module Resources
     class Models < Grape::API
       PRICING_POLICIES = {
-        'Flexible' => ::Crawl::Flexible.new('a'),
-        'Fixed' => ::Crawl::Fixed.new('status'),
-        'Prestige' => ::Crawl::Prestige.new('pubData')
+        1 => ::Crawl::Flexible.new('a'),
+        2 => ::Crawl::Fixed.new('status'),
+        3 => ::Crawl::Prestige.new('pubData')
       }
       namespace :models do
         desc 'Get all model types'
