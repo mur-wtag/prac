@@ -1,5 +1,5 @@
 module Crawl
-  class Fixed
+  class Flexible
     attr_accessor :query
     def initialize(query)
       @query = query
