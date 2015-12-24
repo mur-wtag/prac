@@ -1,7 +1,11 @@
 module API
   module Resources
     class Models < Grape::API
-
+      PRICING_POLICIES = {
+        'Flexible' => ::Crawl::Flexible.new('a'),
+        'Fixed' => ::Crawl::Fixed.new('status'),
+        'Prestige' => ::Crawl::Prestige.new('pubData')
+      }
       namespace :models do
         desc 'Get all model types'
         params do
@@ -40,8 +44,15 @@ module API
           }
           model_type = {}
           model_type = model.model_types.create attributes unless model.blank?
+          organization = model.organization
+
+          pricing_policy = organization.pricing_policy
+          total_price = PRICING_POLICIES[pricing_policy].result(model_type.base_price) || 0
+          additional_params = {
+            total_price: total_price
+          }
           begin
-            present models, model_type, with: API::Entities::ModelType
+            present models, model_type.merge(additional_params), with: API::Entities::ModelType
           rescue Exception => error
             Rails.logger.error "#{error}"
           status :bad_gateway

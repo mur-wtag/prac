@@ -8,8 +8,9 @@ module Crawl
       @query = query
     end
 
-    def result
-      crawl_data
+    def result(base_price)
+      return if crawl_data.items.blank?
+      (base_price + (crawl_data.items.map(&:pubDate).try(:count) || 0))
     end
 
     def crawl_data

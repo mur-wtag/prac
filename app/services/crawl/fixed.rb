@@ -1,4 +1,3 @@
-require 'wombat'
 module Crawl
   class Fixed
     attr_accessor :query
@@ -6,21 +5,13 @@ module Crawl
       @query = query
     end
 
-    def result
-      crawl_data
+    def result(base_price)
+      base_price + ((crawl_data.to_s.count(query) / 100) || 0)
     end
 
     def crawl_data
-      @crawl_data ||= Wombat.crawl do
-        base_url 'https://developer.github.com'
-        path '/v3'
-
-        links do
-          explore xpath: '//*[@class="http-redirects"]' do |e|
-            e.gsub(/Explore/, query)
-          end
-        end
-      end
+      crawler = Cobweb.new(:follow_redirects => false)
+      crawler.get('https://developer.github.com/v3')
     end
   end
 end

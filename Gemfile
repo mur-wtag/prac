@@ -13,7 +13,7 @@ gem 'pg'
 gem 'rails-i18n'
 gem 'therubyracer'
 gem 'uglifier'
-gem 'wombat'
+gem 'cobweb'
 gem 'simple-rss'
 
 group :development, :test do

@@ -1,26 +1,17 @@
-require 'wombat'
 module Crawl
-  class Flexible
+  class Fixed
     attr_accessor :query
     def initialize(query)
       @query = query
     end
 
-    def result
-      crawl_data
+    def result(base_price)
+      base_price + (crawl_data.to_s.count(query) || 0)
     end
 
     def crawl_data
-      @crawl_data ||= Wombat.crawl do
-        base_url 'http://reuters.com'
-        path '/'
-
-        links do
-          explore xpath: '//*[@class="wrapper"]/div[1]/div[1]/div[2]/ul/li[1]/a' do |e|
-            e.gsub(/Explore/, query)
-          end
-        end
-      end
+      crawler = Cobweb.new(:follow_redirects => false)
+      crawler.get('http://reuters.com')
     end
   end
 end

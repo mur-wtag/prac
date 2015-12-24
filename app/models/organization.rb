@@ -6,4 +6,8 @@ class Organization < ActiveRecord::Base
     2 => 'Fixed',
     3 => 'Prestige'
   }
+
+  def pricing_policy
+    TYPES[pricing_policy]
+  end
 end
