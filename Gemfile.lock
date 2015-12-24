@@ -50,6 +50,8 @@ GEM
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.2.5)
+    domain_name (0.5.25)
+      unf (>= 0.0.5, < 1.0.0)
     doorkeeper (3.1.0)
       railties (>= 3.2)
     equalizer (0.0.11)
@@ -88,6 +90,8 @@ GEM
     hashdiff (0.2.3)
     hashie (3.4.3)
     hike (1.2.3)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     i18n (0.7.0)
     ice_nine (0.11.1)
     json (1.8.3)
@@ -98,14 +102,27 @@ GEM
     libv8 (3.16.14.13)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    mechanize (2.7.3)
+      domain_name (~> 0.5, >= 0.5.1)
+      http-cookie (~> 1.0)
+      mime-types (~> 2.0)
+      net-http-digest_auth (~> 1.1, >= 1.1.1)
+      net-http-persistent (~> 2.5, >= 2.5.2)
+      nokogiri (~> 1.4)
+      ntlm-http (~> 0.1, >= 0.1.1)
+      webrobots (>= 0.0.9, < 0.2)
     mime-types (2.99)
     mini_portile2 (2.0.0)
     minitest (5.8.3)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    net-http-digest_auth (1.4)
+    net-http-persistent (2.9.4)
+    netrc (0.11.0)
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
+    ntlm-http (0.1.1)
     oauth2 (1.0.0)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
@@ -140,6 +157,10 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     ref (2.0.0)
+    rest-client (1.8.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     rspec-core (3.4.1)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
@@ -183,6 +204,9 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.1)
     vcr (3.0.1)
     virtus (1.0.5)
       axiom-types (~> 0.1)
@@ -193,6 +217,11 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
+    webrobots (0.1.1)
+    wombat (2.4.0)
+      activesupport
+      mechanize
+      rest-client
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -222,6 +251,7 @@ DEPENDENCIES
   uglifier
   vcr
   webmock
+  wombat
 
 BUNDLED WITH
    1.10.6
