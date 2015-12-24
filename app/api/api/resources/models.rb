@@ -10,7 +10,11 @@ module API
                    desc: 'Model Slug'
         end
         get ':model_slug/model_types' do
-
+          query_params = {
+            model_slug: params[:model_slug]
+          }
+          models = ::Models::CarModel.new(query_params).results
+          present models, with: API::Entities::Model
         end
 
         desc 'Create Model type'
