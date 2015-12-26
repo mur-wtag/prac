@@ -27,9 +27,6 @@ Dir['./spec/support/**/*.rb'].sort.each { |file| require file }
 
 RSpec.configure do |config|
   config.include AuthHelper
-  config.expect_with :rspec do |expectations|
-    expectations.include_chain_clauses_in_custom_matcher_descriptions = true
-  end
 
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
@@ -41,4 +38,11 @@ RSpec.configure do |config|
   config.include RSpec::Rails::RequestExampleGroup,
                  type: :request,
                  file_path: %r(spec/integration)
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 end

@@ -30,4 +30,5 @@ group :test do
   gem 'shoulda-matchers', require: false
   gem 'vcr'
   gem 'webmock'
+  gem 'database_cleaner'
 end

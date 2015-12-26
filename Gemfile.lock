@@ -57,6 +57,7 @@ GEM
       descendants_tracker (~> 0.0.1)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
+    database_cleaner (1.5.1)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.2.5)
@@ -226,6 +227,7 @@ DEPENDENCIES
   capybara
   capybara-webkit
   cobweb
+  database_cleaner
   doorkeeper
   factory_girl_rails
   faker
@@ -249,4 +251,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

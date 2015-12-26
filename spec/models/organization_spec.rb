@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Organization, type: :model do
-  it { should have_many :models }
+  context 'association' do
+    xit { should have_many(:model) }
+  end
 end

@@ -1,5 +1,8 @@
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe ModelType, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'association' do
+    xit { should belong_to(:model) }
+    xit { should belong_to(:organization) }
+  end
 end
