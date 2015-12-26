@@ -12,7 +12,7 @@ RSpec.describe Models::CarModel do
   end
 
   let(:expected_result) do
-    [{:name=>"MyString", :model_types=>[{:name=>"MyString", :base_price=>1.5, :total_price=>51.5}]}, {:name=>"MyString", :model_types=>[{:name=>"MyString", :base_price=>1.5, :total_price=>51.5}]}]
+    [{:name=>"MyString", :model_types=>[{:name=>"MyString", :base_price=>1.5, :total_price=>51.5}]}]
   end
 
   before do
